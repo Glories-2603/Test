@@ -173,12 +173,12 @@ mp.events.add("client:busJob", (answer) => {
 mp.events.add("playerEnterCheckpoint", (checkpoint) => {
     try {
         if (mp.players.local.vehicle.getPedInSeat(-1) !== mp.players.local.handle) {
-            mp.game.graphics.notify('Значение евента не найдено');
+            mp.game.graphics.notify('Вам необходимо быть на водительском месте!');
             return;
         }
         if (_checkpointId == -1 || _checkpointId == undefined)  return;
         if (checkpoint.id == _checkpointId) {
-            if(!mp.players.local.vehicle.getVariable("job") == "bus") return mp.game.graphics.notify('Значение евента не найдено');
+            if(!mp.players.local.vehicle.getVariable("job") == "bus") return mp.game.graphics.notify('Вы должны быть водителем автобуса!');
             if (mp.players.local.getVariable("job") == "bus") {
                 _currentId++;
                 if (_currentId >= bus.markers.length) {
